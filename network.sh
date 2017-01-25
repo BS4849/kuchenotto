@@ -63,32 +63,3 @@ sleep 1
 echo ...
 sleep 1
 sudo reboot 
-
-
-
-
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-#yes/no-button
-
-if (whiptail --title "Wähle aus!" --yes-button "eth0" --no-button "wlan0"  --yesno "Welche Schnittstelle möchtest du einstellen?" $h $w) then
-    echo "You chose Skittles Exit status was $?."
-else
-    echo "You chose M&M's. Exit status was $?."
-fi
-
-#inputbox
-whiptail --title "TITEL" --inputbox "FRAGE" 10 60 3>&1 1>&2 2>&3
-
-#msgbox
-whiptail --title "Willkommen!" --msgbox "FRAGE" $h $w 
-
-
-#!/bin/bash
-PET=$(whiptail --title "TITEL" --inputbox "FRAGE" $h $w  3>&1 1>&2 2>&3)
- 
-exitstatus=$?
-if [ $exitstatus = 0 ]; then
-    echo "Your pet name is:" $PET
-else
-    echo "You chose Cancel."
-fi
