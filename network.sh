@@ -13,7 +13,7 @@ w=78
 
 whiptail --title "Willkommen!" --msgbox "Dies ist ein Script!" $h $w
 
-if (whiptail --title "Wähle aus!" --yes-button "eth0" --no-button "wlan0"  --yesno "Welche Schnittstelle möchtest du einstellen?" $h $w) then
+if (whiptail --title "Wähle aus!" --yes-button "eth0" --no-button "wlan0"  --yesno "Welche Schnittstelle möchtest du einstellen?" $h $w); then
     inet=eth0
 else
     inet=wlan0
@@ -23,7 +23,7 @@ fi
 
 if [ $inet == wlan0 ]; then
 
-	if (whiptail --title "Edimax?" --yes-button "JA!" --no-button "NEIN!"  --yesno "Benutzt du den Edimax-Wlan-Stick?" $h $w) then
+	if (whiptail --title "Edimax?" --yes-button "JA!" --no-button "NEIN!"  --yesno "Benutzt du den Edimax-Wlan-Stick?" $h $w); then
 		echo 'options 8192cu rtw_power_mgnt=0 rtw_enusbss=0' >> $edimax
 	else
 		sleep 0.1
