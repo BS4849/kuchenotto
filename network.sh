@@ -10,7 +10,7 @@ w=78
 
 #------------------------------------------------------------------------
 
-whiptail --title "Willkommen!" --msgbox "Dies ist ein Script!" $h $w
+whiptail --title "Willkommen!" --msgbox "Dies ist mein Script!" $h $w
 
 if (whiptail --title "Wähle aus!" --yes-button "eth0" --no-button "wlan0"  --yesno "Welche Schnittstelle möchtest du einstellen?" $h $w) then
     inet=eth0
