@@ -23,13 +23,13 @@ fi
 
 if [ $inet == wlan0 ]; then
 
-	if (whiptail --title "Edimax?" --yes-button "JA!" --no-button "NEIN!"  --yesno "Benutzt du den Edimax-Wlan-Stick?" $h $w); then
-		echo 'options 8192cu rtw_power_mgnt=0 rtw_enusbss=0' >> $edimax
-	else
-		sleep 0.1
-	fi
+        if (whiptail --title "Edimax?" --yes-button "JA!" --no-button "NEIN!"  --yesno "Benutzt du den Edimax-Wlan-Stick?" $h $w); then
+                echo 'options 8192cu rtw_power_mgnt=0 rtw_enusbss=0' >> $edimax
+        else
+                sleep 0.1
+        fi
 else
-	sleep 0.1
+        sleep 0.1
 fi
 
 if [ $inet == wlan0 ]; then
@@ -39,19 +39,19 @@ if [ $inet == wlan0 ]; then
         ssid=`whiptail --title "SSID" --inputbox "Gib den Netzwerknamen ein!" $h $w  3>&1 1>&2 2>&3`
         pw=`whiptail --title "PASSWORT" --passwordbox "Gib das Passwort ein und bestätige mit OK!" $h $w  3>&1 1>&2 2>&3`
         staticip=`whiptail --title "STATICIP" --inputbox "Wie soll die statische IP für $inet heißen?" $h $w  3>&1 1>&2 2>&3`
-	gateway=`whiptail --title "GATEWAY" --inputbox "Wie soll der Gateway für $inet heißen?" $h $w 192.168.0.1 3>&1 1>&2 2>&3`
-	dns=`whiptail --title "DNS" --inputbox "Wie soll der DNS für $inet heißen?" $h $w 192.168.0.1 3>&1 1>&2 2>&3`
+        gateway=`whiptail --title "GATEWAY" --inputbox "Wie soll der Gateway für $inet heißen?" $h $w 192.168.0.1 3>&1 1>&2 2>&3`
+        dns=`whiptail --title "DNS" --inputbox "Wie soll der DNS für $inet heißen?" $h $w 192.168.0.1 3>&1 1>&2 2>&3`
 
         echo 'network={' >> $wpa
-	echo 'ssid="'$ssid'"' >> $wpa
-	echo 'psk="'$pw'"' >> $wpa
-	echo '}' >> $wpa
+        echo 'ssid="'$ssid'"' >> $wpa
+        echo 'psk="'$pw'"' >> $wpa
+        echo '}' >> $wpa
 
-	sudo chmod 600 $wpa
+        sudo chmod 600 $wpa
 
 else    staticip=`whiptail --title "STATICIP" --inputbox "Wie soll die statische IP für $inet heißen?" $h $w  3>&1 1>&2 2>&3`
-	gateway=`whiptail --title "GATEWAY" --inputbox "Wie soll der Gateway für $inet heißen?" $h $w 192.168.0.1 3>&1 1>&2 2>&3`
-	dns=`whiptail --title "DNS" --inputbox "Wie soll der DNS für $inet heißen?" $h $w 192.168.0.1 3>&1 1>&2 2>&3`
+        gateway=`whiptail --title "GATEWAY" --inputbox "Wie soll der Gateway für $inet heißen?" $h $w 192.168.0.1 3>&1 1>&2 2>&3`
+        dns=`whiptail --title "DNS" --inputbox "Wie soll der DNS für $inet heißen?" $h $w 192.168.0.1 3>&1 1>&2 2>&3`
 fi
 
 #------------------------------------------------------------------------
