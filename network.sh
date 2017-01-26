@@ -1,16 +1,12 @@
 #!/bin/bash
-
 dhcp=/etc/dhcpcd.conf
 wpa=/etc/wpa_supplicant/wpa_supplicant.conf
 edimax=/etc/modprobe.d/8192cu.conf
 script=`readlink -f "$0"`
 scriptpath=`dirname $script`
-
 h=8
 w=78
-
 #------------------------------------------------------------------------
-
 whiptail --title "Willkommen!" --msgbox "Dies ist ein Script!" $h $w
 
 if (whiptail --title "Wähle aus!" --yes-button "eth0" --no-button "wlan0"  --yesno "Welche Schnittstelle möchtest du einstellen?" $h $w); then
