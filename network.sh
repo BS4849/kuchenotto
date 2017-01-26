@@ -1,13 +1,18 @@
 #!/bin/bash
+
 dhcp=/etc/dhcpcd.conf
 wpa=/etc/wpa_supplicant/wpa_supplicant.conf
 edimax=/etc/modprobe.d/8192cu.conf
 script=`readlink -f "$0"`
 scriptpath=`dirname $script`
+
 h=8
 w=78
+
 #------------------------------------------------------------------------
+
 whiptail --title "Willkommen!" --msgbox "Dies ist ein Script!" $h $w
+
 if (whiptail --title "Wähle aus!" --yes-button "eth0" --no-button "wlan0"  --yesno "Welche Schnittstelle möchtest du einstellen?" $h $w); then
     inet=eth0
 else
@@ -44,8 +49,7 @@ if [ $inet == wlan0 ]; then
 
 	sudo chmod 600 $wpa
 
-else	
-	staticip=`whiptail --title "STATICIP" --inputbox "Wie soll die statische IP für $inet heißen?" $h $w  3>&1 1>&2 2>&3`
+else    staticip=`whiptail --title "STATICIP" --inputbox "Wie soll die statische IP für $inet heißen?" $h $w  3>&1 1>&2 2>&3`
 	gateway=`whiptail --title "GATEWAY" --inputbox "Wie soll der Gateway für $inet heißen?" $h $w 192.168.0.1 3>&1 1>&2 2>&3`
 	dns=`whiptail --title "DNS" --inputbox "Wie soll der DNS für $inet heißen?" $h $w 192.168.0.1 3>&1 1>&2 2>&3`
 fi
